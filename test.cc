@@ -3,6 +3,7 @@
 #include <math.h>
 #include <string.h>
 #include <iomanip>
+#include "TestClass.h"
 using namespace std;
 
 int main() {
@@ -63,12 +64,29 @@ int main() {
     }
 
     cout << "---" << endl;
+    TestClass bob("Bob");
+    bob.talk();
+
+    TestClass *unk = new TestClass();
+    unk->talk();
+
+    delete unk;
+
+    TestClass bobClone(bob);
+    bobClone.talk();
+
+    cout << "---" << endl;
     string input;
     cout << "What's your input?" << endl;
     getline(cin, input);
     cout << "It's: \'" << input << "\'" << endl;
     cout << "Length: " << input.length() << endl;
     cout << "Address: " << &input << endl;
+
+    cout << "---" << endl;
+    cout << "OK I am bored, I will crash now." << endl;
+    cout << "There was a person at \'" << unk << "\' and their name was:" << endl;
+    unk->talk();
 
     return 0;
 }
